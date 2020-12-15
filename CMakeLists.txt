@@ -130,19 +130,9 @@ set(OPTIONAL_LIBRARIES_STATIC)
 ########################################################################
 # LIBZMQ dependency
 ########################################################################
-find_package(libzmq REQUIRED)
-IF (LIBZMQ_FOUND)
-    include_directories(${LIBZMQ_INCLUDE_DIRS})
-    list(APPEND MORE_LIBRARIES ${LIBZMQ_LIBRARIES})
-  IF (PC_LIBZMQ_FOUND)
-      set(pkg_config_names_private "${pkg_config_names_private} libzmq")
-      list(APPEND OPTIONAL_LIBRARIES_STATIC ${PC_LIBZMQ_STATIC_LDFLAGS})
-  ELSE (PC_LIBZMQ_FOUND)
-      set(pkg_config_libs_private "${pkg_config_libs_private} -lzmq")
-  ENDIF (PC_LIBZMQ_FOUND)
-ELSE (LIBZMQ_FOUND)
-    message( FATAL_ERROR "libzmq not found." )
-ENDIF (LIBZMQ_FOUND)
+
+set(LIBZMQ_LIBRARIES libzmq-static)
+list(APPEND MORE_LIBRARIES ${LIBZMQ_LIBRARIES})
 
 ########################################################################
 # UUID dependency
