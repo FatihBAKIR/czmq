@@ -137,7 +137,6 @@ list(APPEND MORE_LIBRARIES ${LIBZMQ_LIBRARIES})
 ########################################################################
 # UUID dependency
 ########################################################################
-find_package(uuid)
 option(CZMQ_WITH_UUID "Build czmq with uuid" ${UUID_FOUND})
 IF (CZMQ_WITH_UUID AND UUID_FOUND)
     include_directories(${UUID_INCLUDE_DIRS})
